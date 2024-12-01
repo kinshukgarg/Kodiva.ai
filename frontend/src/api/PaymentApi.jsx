@@ -16,3 +16,26 @@ export const getSpendingData = async () => {
     }
   };
   
+
+  export const processPayment = async (paymentId, amount) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/payments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ paymentId, amount }),
+      });
+  
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Payment failed');
+      }
+  
+      return await response.json();  // Return success message
+    } catch (error) {
+      console.error('Error processing payment:', error);
+      throw error;  // Propagate error
+    }
+  };
+  
