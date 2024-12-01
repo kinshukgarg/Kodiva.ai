@@ -1,4 +1,3 @@
-// frontend/src/components/Dashboard.js
 
 import  { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2'; // Only import Pie for chart rendering
